@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+  	<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Navigation</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let item of feedsArray" (click)="openNavDetailsPage(item)" icon-start>
+      <ion-icon [name]="'logo-angular'" [ngStyle]="{'color': '#E63135'}" item-start></ion-icon>
+      {{ item.kind }}
+    </button>
+  </ion-list>
+</ion-content>

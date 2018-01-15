@@ -1,0 +1,49 @@
+<ion-menu [content]="content" [swipeEnabled]="false">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <!-- Display the side menu pages if it is production -->
+    <ion-list>
+      <ng-container  *ngFor="let root of rootmenu">
+        <ng-container *ngIf="root.child && root.child.length > 0">
+          <ion-item-divider ion-item light style="font-size: 1.4rem" (click)="toggleGroup(root)" [class.selected]="isGroupShown(root)" >
+            {{root.title}}
+            <ion-icon item-right [name]="isGroupShown(root) ? 'arrow-down' : 'arrow-forward'"></ion-icon>
+          </ion-item-divider>
+          <ng-container *ngIf="isGroupShown(root)" style="margin-left: 10px">
+            <button ion-item  *ngFor="let p of root.child" (click)="openPage(p)" [ngClass]="{active: isGroupShown(root)}" menuClose detail-none>
+              {{p.title}}
+            </button>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngIf="!root.child" style="margin-left: 10px">
+            <ion-item-divider ion-item light style="font-size: 1.4rem" (click)="openPage(root)" menuClose detail-none>
+              {{root.title}}
+              <ion-icon item-right [name]="arrow-forward"></ion-icon>
+            </ion-item-divider>
+        </ng-container>
+      </ng-container >
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content></ion-nav>
+
+<div *ngIf="!isProductionMode">
+  <ion-fab left middle>
+    <button ion-fab color="light" (click)="previousSection()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-fab right middle>
+    <button ion-fab color="light" (click)="nextSection()">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+  </ion-fab>
+</div>
