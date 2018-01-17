@@ -1,27 +1,44 @@
 import { NgModule,ErrorHandler} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { Camera,CameraOptions} from '@ionic-native/camera';
+import { AppVersion } from '@ionic-native/app-version';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
-
-// action sheets
 import { SecuredPage } from '../pages/auth/pages';
 
-// action sheets
-import { ActionSheetPage } from '../pages/action-sheets/basic/pages';
+// inputs
+import { BasicPage as XInputBasicPage } from '../pages/inputs/basic/pages';
+import { FloatingPage as XInputFloatingPage } from '../pages/inputs/floating/pages';
+import { FixedInlinePage as XInputFixedInlinePage } from '../pages/inputs/fixed-inline/pages';
+import { InlinePage as XInputInlinePage } from '../pages/inputs/inline/pages';
+import { InsetPage as XInputInsetPage } from '../pages/inputs/inset/pages';
+import { PlaceholderPage as XInputPlaceholderPage } from '../pages/inputs/placeholder/pages';
+import { StackedPage as XInputStackedPage } from '../pages/inputs/stacked/pages';
 
-// alerts
-import { AlertPage} from '../pages/alerts/alert/pages';
-import { CheckboxPage as AlertCheckboxPage } from '../pages/alerts/checkbox/pages';
-import { ConfirmPage as AlertConfirmPage } from '../pages/alerts/confirm/pages';
-import { PromptPage as AlertPromptPage } from '../pages/alerts/prompt/pages';
-import { RadioPage as AlertRadioPage } from '../pages/alerts/radio/pages';
+// buttons
+import { XButtonBasicPage } from '../pages/buttons/basic/pages';
+import { XButtonBlockPage } from '../pages/buttons/block/pages';
+import { XButtonClearPage } from '../pages/buttons/clear/pages';
+import { XButtonComponentsPage } from '../pages/buttons/components/pages';
+import { XButtonFullPage } from '../pages/buttons/full/pages';
+import { XButtonIconsPage } from '../pages/buttons/icons/pages';
+import { XButtonOutlinePage } from '../pages/buttons/outline/pages';
+import { XButtonRoundPage } from '../pages/buttons/round/pages';
+import { XButtonSizesPage } from '../pages/buttons/sizes/pages';
+import { XFabBasicPage } from '../pages/fabs/basic/pages';
 
-// segments
-import { XSegmentasiPage } from '../pages/segments/basic/pages';
-
-// slides
-import { XSliderPage } from '../pages/slides/basic/pages';
+// Dialog
+import { XDialogActionSheetPage } from '../pages/action-sheets/basic/pages';
+import { XDialogConfirmPage } from '../pages/alerts/confirm/pages';
+import { XDialogAlertPage } from '../pages/alerts/alert/pages';
+import { XDialogPromptPage } from '../pages/alerts/prompt/pages';
+import { XDialogCheckboxPage } from '../pages/alerts/checkbox/pages';
+import { XDialogRadioPage } from '../pages/alerts/radio/pages';
+import { XDialogToastPage } from '../pages/toast/basic/pages';
+import { XDialogLoading } from '../pages/loading/basic/pages';
+import { XModalPage,XDialogModalPage} from '../pages/modals/basic/pages';
+import { XPopoverPage,XDialogPopoverPage } from '../pages/popovers/basic/pages';
 
 // lists
 import { XAvatarPage } from '../pages/lists/avatar/pages';
@@ -44,146 +61,88 @@ import { XCardBasicPage } from '../pages/cards/basic/pages';
 import { XCardHeaderPage } from '../pages/cards/header/pages';
 import { XCardImagePage } from '../pages/cards/image/pages';
 import { XCardListPage } from '../pages/cards/list/pages';
+import { XBadgesPage } from '../pages/badges/basic/pages';
 
-// modals
-import { XModalPage, ModalContentPage } from '../pages/modals/basic/pages';
-// popover
-import { XPopoverBasicPage, XPopoverPage } from '../pages/popovers/basic/pages';
+//Modern Input
+import { BasicPage as CheckboxBasicPage } from '../pages/checkboxes/basic/pages';
+import { BasicPage as RadioBasicPage } from '../pages/radios/basic/pages';
+import { BasicPage as SelectBasicPage } from '../pages/selects/basic/pages';
+import { BasicPage as RangeBasicPage } from '../pages/ranges/basic/pages';
+import { BasicPage as ToggleBasicPage } from '../pages/toggles/basic/pages';
+import { BasicPage as DatetimeBasicPage } from '../pages/datetime/basic/pages';
 
-// navigation
+// Tab
+import { XTabBadgesPage } from '../pages/tabs/badges/pages';
+import { XTabBasicPage } from '../pages/tabs/basic/pages';
+import { XTabIconPage } from '../pages/tabs/icon/pages';
+import { XTabIconTextPage } from '../pages/tabs/icon-text/pages';
+import { XSegmentasiPage } from '../pages/segments/basic/pages';
 import { XNavigationPage, XNavigationDetailsPage } from '../pages/navigation/basic/pages';
 
 // toolbars
 import { BasicPage as ToolbarBasicPage } from '../pages/toolbar/basic/pages';
 import { ButtonsPage as ToolbarButtonsPage } from '../pages/toolbar/buttons/pages';
+import { SearchbarPage as ToolbarSearchbarPage } from '../pages/toolbar/searchbar/pages';
+import { SegmentPage as ToolbarSegmentPage } from '../pages/toolbar/segment/pages';
 import { ColorsPage as ToolbarColorsPage } from '../pages/toolbar/colors/pages';
 import { Page2 as ToolbarColorsPage2 } from '../pages/toolbar/colors/pages';
 import { Page3 as ToolbarColorsPage3 } from '../pages/toolbar/colors/pages';
 import { Page4 as ToolbarColorsPage4 } from '../pages/toolbar/colors/pages';
-import { SearchbarPage as ToolbarSearchbarPage } from '../pages/toolbar/searchbar/pages';
-import { SegmentPage as ToolbarSegmentPage } from '../pages/toolbar/segment/pages';
-
-// tabs
-import { XTabBadgesPage } from '../pages/tabs/badges/pages';
-import { XTabBasicPage } from '../pages/tabs/basic/pages';
-import { XTabIconPage } from '../pages/tabs/icon/pages';
-import { XTabIconTextPage } from '../pages/tabs/icon-text/pages';
-
-// badges
-import { XBadgesPage } from '../pages/badges/basic/pages';
-
-// buttons
-import { BasicPage as ButtonBasicPage } from '../pages/buttons/basic/pages';
-import { BlockPage as ButtonBlockPage } from '../pages/buttons/block/pages';
-import { ClearPage as ButtonClearPage } from '../pages/buttons/clear/pages';
-import { ComponentsPage as ButtonComponentsPage } from '../pages/buttons/components/pages';
-import { FullPage as ButtonFullPage } from '../pages/buttons/full/pages';
-import { IconsPage as ButtonIconsPage } from '../pages/buttons/icons/pages';
-import { OutlinePage as ButtonOutlinePage } from '../pages/buttons/outline/pages';
-import { RoundPage as ButtonRoundPage } from '../pages/buttons/round/pages';
-import { SizesPage as ButtonSizesPage } from '../pages/buttons/sizes/pages';
-
-// fabs
-import { BasicPage as FabBasicPage } from '../pages/fabs/basic/pages';
 
 
-
-// checkboxes
-import { BasicPage as CheckboxBasicPage } from '../pages/checkboxes/basic/pages';
-
-// datetime
-import { BasicPage as DatetimeBasicPage } from '../pages/datetime/basic/pages';
-
-// gestures
 import { BasicPage as GestureBasicPage } from '../pages/gestures/basic/pages';
-
-// grid
 import { BasicPage as GridBasicPage } from '../pages/grid/basic/pages';
-
-// icons
 import { BasicPage as IconBasicPage } from '../pages/icons/basic/pages';
+import { BasicPage as SearchbarBasicPage } from '../pages/searchbars/basic/pages';
+import { XSliderPage } from '../pages/slides/basic/pages';
 
-// inputs
-import { BasicPage as InputBasicPage } from '../pages/inputs/basic/pages';
-import { FloatingPage as InputFloatingPage } from '../pages/inputs/floating/pages';
-import { FixedInlinePage as InputFixedInlinePage } from '../pages/inputs/fixed-inline/pages';
-import { InlinePage as InputInlinePage } from '../pages/inputs/inline/pages';
-import { InsetPage as InputInsetPage } from '../pages/inputs/inset/pages';
-import { PlaceholderPage as InputPlaceholderPage } from '../pages/inputs/placeholder/pages';
-import { StackedPage as InputStackedPage } from '../pages/inputs/stacked/pages';
-
-
-
-// loading
-import { BasicPage as LoadingBasicPage } from '../pages/loading/basic/pages';
-
-// menu
 import { BasicPage as MenuBasicPage } from '../pages/menus/basic/pages';
 import { PageOne as MenuPageOne } from '../pages/menus/basic/pages';
 import { PageTwo as MenuPageTwo } from '../pages/menus/basic/pages';
 import { PageThree as MenuPageThree } from '../pages/menus/basic/pages';
 
 
-
-
-
-
-
-// radios
-import { BasicPage as RadioBasicPage } from '../pages/radios/basic/pages';
-
-// ranges
-import { BasicPage as RangeBasicPage } from '../pages/ranges/basic/pages';
-
-// searchbar
-import { BasicPage as SearchbarBasicPage } from '../pages/searchbars/basic/pages';
-
-
-
-// selects
-import { BasicPage as SelectBasicPage } from '../pages/selects/basic/pages';
-
-
-
-
-
-// toast
-import { ToastPage } from '../pages/toast/basic/pages';
-
-// toggles
-import { BasicPage as ToggleBasicPage } from '../pages/toggles/basic/pages';
-
-
-// pipes
 import { DisplayRoutePipe } from '../pipes/display-route';
 import { RestapiServiceProvider } from '../providers/restapi-service/restapi-service';
 
 
 @NgModule({
-  declarations: [
+  declarations: 
+  [
     MyApp,
     SecuredPage,
-    ActionSheetPage,
 
-    AlertPage,
-    AlertCheckboxPage,
-    AlertConfirmPage,
-    AlertPromptPage,
-    AlertRadioPage,
+    XInputBasicPage,
+    XInputFloatingPage,
+    XInputFixedInlinePage,
+    XInputInlinePage,
+    XInputInsetPage,
+    XInputPlaceholderPage,
+    XInputStackedPage,
 
-    XBadgesPage,
+    XButtonBasicPage,
+    XButtonBlockPage,
+    XButtonClearPage,
+    XButtonComponentsPage,
+    XButtonFullPage,
+    XButtonIconsPage,
+    XButtonOutlinePage,
+    XButtonRoundPage,
+    XButtonSizesPage,
+    XFabBasicPage,
 
-    ButtonBasicPage,
-    ButtonBlockPage,
-    ButtonClearPage,
-    ButtonComponentsPage,
-    ButtonFullPage,
-    ButtonIconsPage,
-    ButtonOutlinePage,
-    ButtonRoundPage,
-    ButtonSizesPage,
-
-    FabBasicPage,
+    XDialogActionSheetPage,
+    XDialogConfirmPage,
+    XDialogAlertPage,
+    XDialogPromptPage,
+    XDialogCheckboxPage,
+    XDialogRadioPage,
+    XDialogToastPage,
+    XDialogLoading,
+    XModalPage,
+    XDialogModalPage,
+    XPopoverPage,
+    XDialogPopoverPage,
 
     XAdvancedMapPage,
     XAdvancedSocialPage,
@@ -193,24 +152,7 @@ import { RestapiServiceProvider } from '../providers/restapi-service/restapi-ser
     XCardHeaderPage,
     XCardImagePage,
     XCardListPage,
-
-    CheckboxBasicPage,
-
-    DatetimeBasicPage,
-
-    GestureBasicPage,
-
-    GridBasicPage,
-
-    IconBasicPage,
-
-    InputBasicPage,
-    InputFloatingPage,
-    InputFixedInlinePage,
-    InputInlinePage,
-    InputInsetPage,
-    InputPlaceholderPage,
-    InputStackedPage,
+    XBadgesPage,
 
     XAvatarPage,
     ListBasicPage,
@@ -223,58 +165,45 @@ import { RestapiServiceProvider } from '../providers/restapi-service/restapi-ser
     XSlidingPage,
     XThumbnailPage,
 
-    LoadingBasicPage,
+    CheckboxBasicPage,
+    RadioBasicPage,
+    SelectBasicPage,
+    RangeBasicPage,
+    ToggleBasicPage,
+    DatetimeBasicPage,
+    
+    XTabBadgesPage,
+    XTabBasicPage,
+    XTabIconPage,
+    XTabIconTextPage,
+    XSegmentasiPage,
+    XNavigationPage,
+    XNavigationDetailsPage,
+
+    ToolbarBasicPage,
+    ToolbarButtonsPage,
+    ToolbarSearchbarPage,
+    ToolbarSegmentPage,
+    ToolbarColorsPage,
+    ToolbarColorsPage2,
+    ToolbarColorsPage3,
+    ToolbarColorsPage4,
+    
+    GestureBasicPage,
+    GridBasicPage,
+    IconBasicPage,
+    SearchbarBasicPage,
+    XSliderPage,
+
 
     MenuBasicPage,
     MenuPageOne,
     MenuPageTwo,
     MenuPageThree,
-
-    XModalPage,
-    ModalContentPage,
-
-    XNavigationPage,
-    XNavigationDetailsPage,
-
-    XPopoverBasicPage,
-    XPopoverPage,
-
-    RadioBasicPage,
-
-    RangeBasicPage,
-
-    SearchbarBasicPage,
-
-    XSegmentasiPage,
-
-    SelectBasicPage,
-
-    XSliderPage,
-
-    XTabBadgesPage,
-
-    XTabBasicPage,
-
-    XTabIconPage,
-    XTabIconTextPage,
-
-
-    ToastPage,
-
-    ToggleBasicPage,
-
-    ToolbarBasicPage,
-    ToolbarButtonsPage,
-    ToolbarColorsPage,
-    ToolbarColorsPage2,
-    ToolbarColorsPage3,
-    ToolbarColorsPage4,
-    ToolbarSearchbarPage,
-    ToolbarSegmentPage,
-
     DisplayRoutePipe
   ],
-  imports: [
+  imports: 
+  [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp, {
@@ -282,56 +211,42 @@ import { RestapiServiceProvider } from '../providers/restapi-service/restapi-ser
     })
   ],
   bootstrap: [IonicApp],
-  entryComponents: [
+  entryComponents: 
+  [
     MyApp,
     SecuredPage,
-    ActionSheetPage,
-    AlertPage,
-    AlertCheckboxPage,
-    AlertConfirmPage,
-    AlertPromptPage,
-    AlertRadioPage,
 
-    XBadgesPage,
+    XInputBasicPage,
+    XInputFloatingPage,
+    XInputFixedInlinePage,
+    XInputInlinePage,
+    XInputInsetPage,
+    XInputPlaceholderPage,
+    XInputStackedPage,
 
-    ButtonBasicPage,
-    ButtonBlockPage,
-    ButtonClearPage,
-    ButtonComponentsPage,
-    ButtonFullPage,
-    ButtonIconsPage,
-    ButtonOutlinePage,
-    ButtonRoundPage,
-    ButtonSizesPage,
+    XButtonBasicPage,
+    XButtonBlockPage,
+    XButtonClearPage,
+    XButtonComponentsPage,
+    XButtonFullPage,
+    XButtonIconsPage,
+    XButtonOutlinePage,
+    XButtonRoundPage,
+    XButtonSizesPage,
+    XFabBasicPage,
 
-    FabBasicPage,
-
-    XAdvancedMapPage,
-    XAdvancedSocialPage,
-    XAdvancedWeatherPage,
-    XBackgroundPage,
-    XCardBasicPage,
-    XCardHeaderPage,
-    XCardImagePage,
-    XCardListPage,
-
-    CheckboxBasicPage,
-
-    DatetimeBasicPage,
-
-    GestureBasicPage,
-
-    GridBasicPage,
-
-    IconBasicPage,
-
-    InputBasicPage,
-    InputFloatingPage,
-    InputFixedInlinePage,
-    InputInlinePage,
-    InputInsetPage,
-    InputPlaceholderPage,
-    InputStackedPage,
+    XDialogActionSheetPage,
+    XDialogConfirmPage,
+    XDialogAlertPage,
+    XDialogPromptPage,
+    XDialogCheckboxPage,
+    XDialogRadioPage,
+    XDialogToastPage,
+    XDialogLoading,
+    XModalPage,
+    XDialogModalPage,
+    XPopoverPage,
+    XDialogPopoverPage,
 
     XAvatarPage,
     ListBasicPage,
@@ -343,53 +258,52 @@ import { RestapiServiceProvider } from '../providers/restapi-service/restapi-ser
     XNoLinesPage,
     XSlidingPage,
     XThumbnailPage,
+    
+    XAdvancedMapPage,
+    XAdvancedSocialPage,
+    XAdvancedWeatherPage,
+    XBackgroundPage,
+    XCardBasicPage,
+    XCardHeaderPage,
+    XCardImagePage,
+    XCardListPage,
+    XBadgesPage,
 
-    LoadingBasicPage,
-
-    MenuBasicPage,
-    MenuPageOne,
-    MenuPageTwo,
-    MenuPageThree,
-
-    XModalPage,
-    ModalContentPage,
-
-    XNavigationPage,
-    XNavigationDetailsPage,
-
-    XPopoverBasicPage,
-    XPopoverPage,
-
+    CheckboxBasicPage,
     RadioBasicPage,
-
-    RangeBasicPage,
-
-    SearchbarBasicPage,
-
-    XSegmentasiPage,
-
     SelectBasicPage,
-
-    XSliderPage,
+    RangeBasicPage,
+    ToggleBasicPage,
+    DatetimeBasicPage,
 
     XTabBadgesPage,
     XTabBasicPage,
     XTabIconPage,
     XTabIconTextPage,
-
-    ToastPage,
-
-    ToggleBasicPage,
+    XSegmentasiPage,
+    XNavigationPage,
+    XNavigationDetailsPage,
 
     ToolbarBasicPage,
     ToolbarButtonsPage,
+    ToolbarSearchbarPage,
+    ToolbarSegmentPage,
     ToolbarColorsPage,
     ToolbarColorsPage2,
     ToolbarColorsPage3,
     ToolbarColorsPage4,
-    ToolbarSearchbarPage,
-    ToolbarSegmentPage,
+
+    GestureBasicPage,
+    GridBasicPage,
+    IconBasicPage,
+    SearchbarBasicPage,
+    XSliderPage,
+
+    MenuBasicPage,
+    MenuPageOne,
+    MenuPageTwo,
+    MenuPageThree
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},RestapiServiceProvider]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},RestapiServiceProvider,Camera,AppVersion]
 })
 export class AppModule { }

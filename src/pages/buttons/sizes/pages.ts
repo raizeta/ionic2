@@ -4,4 +4,4 @@ import { Component } from '@angular/core';
 @Component({
   templateUrl: 'sizes.html'
 })
-export class SizesPage { }
+export class XButtonSizesPage { }

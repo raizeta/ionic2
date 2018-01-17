@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
-import { XModalPage } from '../../../pages/modals/basic/pages';
+// import { XModalPage } from '../../../pages/modals/basic/pages';
 
 @Component({
   template: `

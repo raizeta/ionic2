@@ -6,7 +6,7 @@ import { Platform, ActionSheetController } from 'ionic-angular';
 @Component({
   templateUrl: 'template.html'
 })
-export class ActionSheetPage {
+export class XDialogActionSheetPage {
   constructor(
     public platform: Platform,
     public actionsheetCtrl: ActionSheetController

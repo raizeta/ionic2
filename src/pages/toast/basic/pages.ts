@@ -6,7 +6,7 @@ import { ToastController } from 'ionic-angular';
 @Component({
   templateUrl: 'template.html'
 })
-export class ToastPage {
+export class XDialogToastPage {
   constructor(public toastCtrl: ToastController) { }
 
   showToast(position: string) {

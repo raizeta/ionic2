@@ -6,7 +6,7 @@ import { AlertController } from 'ionic-angular';
 @Component({
   templateUrl: 'template.html'
 })
-export class RadioPage {
+export class XDialogRadioPage {
   testRadioOpen: boolean;
   testRadioResult;
 

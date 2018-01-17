@@ -6,7 +6,7 @@ import { AlertController } from 'ionic-angular';
 @Component({
   templateUrl: 'template.html'
 })
-export class CheckboxPage {
+export class XDialogCheckboxPage {
   testCheckboxOpen: boolean;
   testCheckboxResult;
 

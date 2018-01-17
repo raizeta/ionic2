@@ -10,6 +10,7 @@ export class XNavigationDetailsPage
   items = [];
   item:any;
 
+
   constructor(params: NavParams) 
   {
     this.items = [
@@ -68,7 +69,7 @@ export class XNavigationDetailsPage
         'color': '#000'
       },
     ]
-    this.item = this.items[0];
+    this.item = this.items[Math.floor(Math.random() * 8) + 1 ];
   }
 }
 
@@ -82,11 +83,12 @@ export class XNavigationPage
   filter:any;
   limit:any;
   loading:any;
+  pet: string = "puppies";
 
   constructor(public nav: NavController,public restapiService: RestapiServiceProvider,public alerCtrl: AlertController,private loadingCtrl: LoadingController) 
   {
     this.filter = 'sports';
-    this.limit = 10;
+    this.limit = 3;
     this.loaddatafromserver(this.filter,this.limit);
     
   }

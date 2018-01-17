@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-
-
+import { NavController } from 'ionic-angular';
+import { SecuredPage } from '../../../pages/auth/pages';
 @Component({
   templateUrl: 'template.html'
 })
-export class XSliderPage {
-  slides = [
+export class XSliderPage 
+{
+  slides = 
+  [
     {
       title: "Welcome to the Docs!",
       description: "The <b>Ionic Component Documentation</b> showcases a number of useful components that are included out of the box with Ionic.",
@@ -22,4 +24,14 @@ export class XSliderPage {
       image: "assets/img/ica-slidebox-img-3.png",
     }
   ];
+  constructor(public nav: NavController) 
+  {
+    
+  }
+  ContinueAction() 
+  {
+    this.nav.setRoot(SecuredPage);
+  }
+
+  
 }

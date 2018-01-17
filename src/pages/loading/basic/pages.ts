@@ -6,7 +6,7 @@ import { LoadingController } from 'ionic-angular';
 @Component({
   templateUrl: 'template.html'
 })
-export class BasicPage {
+export class XDialogLoading {
 
   constructor(public loadingCtrl: LoadingController) { }
 

@@ -6,7 +6,7 @@ import { PopoverController, NavParams } from 'ionic-angular';
 @Component({
   templateUrl: 'popovertemplate.html'
 })
-export class XPopoverPage {
+export class XDialogPopoverPage {
   background: string;
   contentEle: any;
   textEle: any;
@@ -94,7 +94,7 @@ export class XPopoverPage {
 @Component({
   templateUrl: 'template.html'
 })
-export class XPopoverBasicPage {
+export class XPopoverPage {
   @ViewChild('popoverContent', { read: ElementRef }) content: ElementRef;
   @ViewChild('popoverText', { read: ElementRef }) text: ElementRef;
 
@@ -104,7 +104,7 @@ export class XPopoverBasicPage {
 
   presentPopover(ev) {
 
-    let popover = this.popoverCtrl.create(XPopoverPage, {contentEle: this.content.nativeElement,textEle: this.text.nativeElement});
+    let popover = this.popoverCtrl.create(XDialogPopoverPage, {contentEle: this.content.nativeElement,textEle: this.text.nativeElement});
 
     popover.present({
       ev: ev

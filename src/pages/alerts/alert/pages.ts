@@ -6,7 +6,7 @@ import { AlertController } from 'ionic-angular';
 @Component({
   templateUrl: 'template.html'
 })
-export class AlertPage {
+export class XDialogAlertPage {
 
   constructor(public alerCtrl: AlertController) { }
 
